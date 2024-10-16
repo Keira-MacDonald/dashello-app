@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashello</title>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <link rel="stylesheet" href="homepage_style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <a class="circle" href="#home">+</a>
+    <span class="circle-text">Welcome To Your Business Dashboard</span>
+    <a class="active" id="homeButton">Home</a>
+    <a id="newsButton">News</a>
+    <a id="contactButton">Contact</a>
+    <a id="aboutButton">About</a>
+</div>
+
+<div id="overlay" class="overlay" style="display: none;"></div>
+
+<div class="content">
+    <div class="radio-input">
+      <label>
+        <input value="value-1" name="value-radio" id="value-1" type="radio" />
+        <span>Row</span>
+      </label>
+      <label>
+    <input value="value-2" name="value-radio" id="value-2" type="radio" />
+    <span>Column</span>
+  </label>
+  <span class="selection"></span>
+</div>
+    <button class="rowbutton" id="addBoxButton">Add Box</button>
+    <hr class="separator">
+
+
+    <!-- metric box-->
+    <div class="box" id="editableBox">
+        <h2 id="boxTitle">Empty Metric Box</h2>
+        <label for="toggle"></label><input class="toggle-checkbox" id="toggle" type="checkbox" />
+
+        <div class="circleInBox"></div>
+    </div>
+    <hr class="space" id="space">
+
+    <!-- Overhead Modal -->
+<div class="modal2" id="overheadModal" style="display: none;">
+    <div class="header">
+        <h2 id="overheadTitle"></h2>
+        <button class="edit-button" id="editButton">Edit</button>
+        <button class="close-button" id="closeOverheadModal">&times;</button>
+    </div>
+    <div class="health-status">
+        <span>Health - 100%</span>
+        <div class="progress-bar"></div>
+    </div>
+    <div class="main-content">
+        <div class="summary-box">
+            <div class="balance">
+                <p>Balance</p>
+                <h3 contenteditable="true">$79,941.08</h3>
+            </div>
+            <div class="income">
+                <p>Income</p>
+                <h3 contenteditable="true">$52,786.45</h3>
+            </div>
+            <div class="expenses">
+                <p>Expenses</p>
+                <h3 contenteditable="true">$25,345.37</h3>
+            </div>
+        </div>
+        <div class="transactions">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transactions</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Payment Received</td>
+                        <td>01/10/2024</td>
+                        <td>$10,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Office Supplies</td>
+                        <td>01/15/2024</td>
+                        <td>$1,200.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="side-content">
+            <div class="projections">
+                <h4>Projections</h4>
+                <p>Projected Income: $47,213.55</p>
+                <p>Projected Expenses: $24,854.63</p>
+                <p>Estimated Balance: $35,058.92</p>
+            </div>
+            <div class="suggestions">
+                <h4>Suggestions</h4>
+                <ul>
+                    <li>Add $9,781.16 to Tax account.</li>
+                    <li>Add $9,781.16 to Profit account.</li>
+                </ul>
+                <a href="#" id="link">View All</a>
+                <!-- Modal Structure -->
+<div class="modal" id="viewAllModal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>View All Content</h2>
+        <p>This is the content of the popup modal.</p>
+    </div>
+</div>
+
+            </div>
+            <div class="next-actions">
+                <h4>Next Actions</h4>
+                <ul>
+                    <li>Add $9,781.16 to Tax account.</li>
+                    <li>Add $9,781.16 to Profit account.</li>
+                </ul>
+                <a href="#">View All</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editModal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Edit Title</h3>
+        <label for="titleInput"></label>
+        <input type="text" id="titleInput" placeholder="Enter new title">
+
+        <!-- From Uiverse.io by vinodjangid07 -->
+        <button class="bookmarkBtn" id="saveTitle">
+            <span class="IconContainer">
+                <svg viewBox="0 0 384 512" height="0.9em" class="icon">
+                    <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path>
+                </svg>
+            </span>
+            <p class="text">Save</p>
+        </button>
+
+        <button id="resetTitleButton" class="button3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 69 14" class="svgIcon bin-top">
+                <g clip-path="url(#clip0_35_24)">
+                    <path fill="black" d="M20.8232 2.62734L19.9948 4.21304C19.8224 4.54309 19.4808 4.75 19.1085 4.75H4.92857C2.20246 4.75 0 6.87266 0 9.5C0 12.1273 2.20246 14.25 4.92857 14.25H64.0714C66.7975 14.25 69 12.1273 69 9.5C69 6.87266 66.7975 4.75 64.0714 4.75H49.8915C49.5192 4.75 49.1776 4.54309 49.0052 4.21305L48.1768 2.62734C47.3451 1.00938 45.6355 0 43.7719 0H25.2281C23.3645 0 21.6549 1.00938 20.8232 2.62734ZM64.0023 20.0648C64.0397 19.4882 63.5822 19 63.0044 19H5.99556C5.4178 19 4.96025 19.4882 4.99766 20.0648L8.19375 69.3203C8.44018 73.0758 11.6746 76 15.5712 76H53.4288C57.3254 76 60.5598 73.0758 60.8062 69.3203L64.0023 20.0648Z"></path>
+                </g>
+                <defs>
+                    <clipPath id="clip0_35_24">
+                        <rect fill="white" height="14" width="69"></rect>
+                    </clipPath>
+                </defs>
+            </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 69 57" class="svgIcon bin-bottom">
+                <g clip-path="url(#clip0_35_22)">
+                    <path fill="black" d="M20.8232 -16.3727L19.9948 -14.787C19.8224 -14.4569 19.4808 -14.25 19.1085 -14.25H4.92857C2.20246 -14.25 0 -12.1273 0 -9.5C0 -6.8727 2.20246 -4.75 4.92857 -4.75H64.0714C66.7975 -4.75 69 -6.8727 69 -9.5C69 -12.1273 66.7975 -14.25 64.0714 -14.25H49.8915C49.5192 -14.25 49.1776 -14.4569 49.0052 -14.787L48.1768 -16.3727C47.3451 -17.9906 45.6355 -19 43.7719 -19H25.2281C23.3645 -19 21.6549 -17.9906 20.8232 -16.3727ZM64.0023 1.0648C64.0397 0.4882 63.5822 0 63.0044 0H5.99556C5.4178 0 4.96025 0.4882 4.99766 1.0648L8.19375 50.3203C8.44018 54.0758 11.6746 57 15.5712 57H53.4288C57.3254 57 60.5598 54.0758 60.8062 50.3203L64.0023 1.0648Z"></path>
+                </g>
+                <defs>
+                    <clipPath id="clip0_35_22">
+                        <rect fill="white" height="57" width="69"></rect>
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+    <script src="pop-up.js"></script>
+
+</div>
+
+<div class="left-sidebar-grid">
+    <main class="main-content"></main>
+    <section class="left-sidebar"></section>
+    <section class="right-sidebar"></section>
+</div>
+<div class="banter-loader">
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+</div>
+
+<script>
+$(document).ready(function () {
+    // Function to show all modals
+    function showAllModals() {
+        $('#overlay').fadeIn();
+        $('#overheadModal').fadeIn().addClass('zoom-in');
+        $('#viewAllModal').fadeIn();
+        $('#editModal').fadeIn();
+    }
+
+    // Function to hide all modals
+    function hideAllModals() {
+        $('#overlay').fadeOut();
+        $('#overheadModal').fadeOut().removeClass('zoom-in');
+        $('#viewAllModal').fadeOut();
+        $('#editModal').fadeOut();
+    }
+
+    // Function to show only "View All" modal
+    function showViewAllModal() {
+        $('#overlay').fadeIn();
+        $('#viewAllModal').fadeIn();
+    }
+
+    // Function to hide only "View All" modal
+    function hideViewAllModal() {
+        $('#overlay').fadeOut();
+        $('#viewAllModal').fadeOut();
+    }
+
+    // Reset the box title when the garbage can button is clicked
+    $('#resetTitleButton').on('click', function () {
+        $('#titleInput').val('');
+    });
+
+    // Example: Hide loader after 2 seconds
+    setTimeout(function () {
+        $('.banter-loader').fadeOut(1000);
+    });
+
+    // Open all modals with zoom-in effect when the metric box is clicked
+    $('#link').on('click', function () {
+        showAllModals();
+    });
+     // Open all modals with zoom-in effect when the metric box is clicked
+    $('#editableBox').on('click', function () {
+        $('#overheadModal').fadeIn();
+        $('#overlay').fadeIn();
+    });
+
+    // Close all modals when the close button is clicked
+    $('#closeOverheadModal').on('click', function () {
+        hideAllModals();
+    });
+
+    // Close modals when clicking outside of them
+    $(window).on('click', function (event) {
+        if ($(event.target).is('#overheadModal') || $(event.target).is('#viewAllModal') || $(event.target).is('#editModal')) {
+            hideAllModals();
+        }
+    });
+
+    // Show the "View All" modal when "View All" link is clicked
+    $('a[href="#"]').on('click', function(event) {
+        event.preventDefault();
+        showViewAllModal();
+    });
+
+    // Close the "View All" modal when the close button is clicked
+    $('#viewAllModal .close').on('click', function() {
+        hideViewAllModal();
+    });
+
+    // Close the "View All" modal when pressing the Escape key
+    $(document).on('keydown', function(event) {
+        if (event.key === "Escape") {
+            hideViewAllModal();
+        }
+    });
+
+    // Function to add a new metric box
+    $('#addBoxButton').on('click', function () {
+        // Clone the existing box
+        var newBox = $('#editableBox').clone();
+        var newSpace = $('#space').clone();
+
+        // Generate a unique ID for the new box and its elements
+        var uniqueId = 'box' + ($('.box').length + 1);
+        newBox.attr('id', uniqueId);
+
+        // Update the title inside the new box
+        newBox.find('#boxTitle').text('Empty Metric Box ' + ($('.box').length + 1));
+
+        // Append the new box to the content div
+        newBox.appendTo('.content');
+        newSpace.appendTo('.content');
+    });
+
+    // Fade out preloader
+    $(window).on('load', function () {
+        $('#preloader').fadeOut('slow', function () {
+            $('#svg-load').fadeIn('slow');
+        });
+    });
+});
+</script>
+
+
+
+    <!-- switching frame-->
+    <script src="Change.js"></script>
+</div>
+
+
