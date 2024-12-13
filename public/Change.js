@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Function to handle navigation
     function navigateTo(url) {
-        window.location.href = url;
+        // window.location.href = url;
     }
 
     // Switch to news
@@ -27,4 +27,5 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Prevent default anchor behavior
         navigateTo("About.html");
     });
+ 
 });
